@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="el">
+<!--
+  Χριστίνα Ευγενίδου — Ψυχολόγος εφήβων & ενηλίκων, MSc · Θεσσαλονίκη & online
+  Built by Advon Media — https://advonmedia.com
+
+  SKELETON ROLL (Design System v2)
+    Hero .............. magazine masthead (full-width Didone name, dateline row, portrait + lead + credentials below)
+    Nav ............... top bar (name left, links right, EL/EN, CTA)
+    Services .......... tabs (Ενήλικες · Έφηβοι · Γυναίκες · Online & τεστ)
+    Signature ......... «Η πορεία της θεραπείας» scroll-driven path — the line draws itself as you read (only moving element)
+    Social proof ...... grid wall (2×2 quote cards, doctoranytime 10/10 badge, no count shown)
+    FAQ ............... full-width band after social proof (single accordion column)
+    Contact ........... split map + form
+    Ambient ........... the masthead name shrinks into the nav on scroll (transform only)
+    Type .............. GFS Didot (Greek Didone ✓) + Commissioner (Greek ✓)
+
+  INDEXING STATE: PREVIEW (GitHub Pages)
+    - <meta name="robots" content="noindex,nofollow"> is active
+    - robots.txt disallows everything
+    - sitemap.xml lists FINAL-domain URLs (placeholder domain until confirmed)
+    - canonical / og:url / hreflang intentionally OMITTED until the domain is confirmed
+
+  STILL NEEDED FROM THE CLIENT: direct phone number, email, Formspree endpoint for the form,
+  opening hours, office photos, session fees. The doctoranytime number is their call-tracking line, so it is not published.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ψυχολόγος Θεσσαλονίκη | Χριστίνα Ευγενίδου, MSc</title>
+<meta name="description" content="Ψυχολόγος εφήβων και ενηλίκων στο κέντρο της Θεσσαλονίκης και online. Γνωσιακή-συμπεριφορική θεραπεία για άγχος, πανικό, διατροφικές διαταραχές και γυναικεία ενδυνάμωση, στα ελληνικά και στα αγγλικά.">
+<meta name="theme-color" content="#F4F0E8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Χριστίνα Ευγενίδου, MSc — Ψυχολόγος εφήβων & ενηλίκων, Θεσσαλονίκη">
+<meta property="og:description" content="Γνωσιακή-συμπεριφορική θεραπεία δια ζώσης στη Θεσσαλονίκη και online, στα ελληνικά και στα αγγλικά.">
+<meta property="og:locale" content="el_GR">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Commissioner:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Commissioner:wght@400;600&display=swap">
+<link rel="preload" as="image" href="assets/christina-evgenidou-psychologos-thessaloniki.webp" fetchpriority="high">
+<style>
+:root{
+  --paper:#F4F0E8; --surface:#EAE4D8; --surface-2:#E0D8C9;
+  --ink:#1E2A2B; --muted:#5F6A68; --line:rgba(30,42,43,.13);
+  --accent:#B5654A; --accent-ink:#9A4F36; --accent-soft:#E9C9B9;
+  --deep:#22423A; --deep-2:#1A332D; --on-deep:#EEF1EA;
+  --didot:"GFS Didot","Didot","Bodoni MT",Georgia,serif;
+  --sans:"Commissioner",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --maxw:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{list-style:none}
+::selection{background:var(--accent-soft);color:var(--ink)}
+.wrap{width:min(var(--maxw),calc(100% - 56px));margin-inline:auto}
+@media (max-width:640px){.wrap{width:calc(100% - 40px)}}
+h1,h2,h3,.didot{font-family:var(--didot);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(40px,5vw,72px)}
+h3{font-size:clamp(24px,2.2vw,32px);line-height:1.15}
+.kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-ink);font-weight:600}
+.lead{font-size:clamp(18px,1.35vw,21px);color:var(--muted);max-width:56ch}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:4px;background:var(--ink);color:var(--paper);font-weight:600;font-size:15px;transition:transform .35s var(--ease),background .35s}
+.btn svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.btn.accent{background:var(--accent);color:#fff}
+.btn.light{background:var(--paper);color:var(--deep)}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+@media (hover:hover){.btn:hover{transform:translateY(-2px)}.btn:hover svg{transform:translateX(4px)}}
+.tlink{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;border-bottom:1.5px solid var(--accent);padding-bottom:3px}
+.tlink svg{width:16px;height:16px}
+.rule{height:1px;background:var(--line)}
+.num{font-family:var(--didot);font-size:13px;letter-spacing:.1em;color:var(--accent-ink)}
+
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+
+.sr{opacity:1;transform:none}
+html.js .sr{opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+html.js .sr.in{opacity:1;transform:none}
+html.js .sr.d1{transition-delay:.06s}html.js .sr.d2{transition-delay:.12s}html.js .sr.d3{transition-delay:.18s}
+
+/* ===== NAV ===== */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding:16px 0;transition:background .4s,box-shadow .4s}
+.nav.scrolled{background:rgba(244,240,232,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{white-space:nowrap;font-family:var(--didot);font-size:22px;letter-spacing:.01em;display:flex;align-items:baseline;gap:10px;opacity:0;transform:translateY(-6px);transition:opacity .4s,transform .4s var(--ease)}
+.brand small{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);font-weight:600}
+.nav.scrolled .brand,.nav.always .brand{opacity:1;transform:none}
+.nav ul{display:flex;gap:30px;font-size:14px;font-weight:600;white-space:nowrap;align-items:center}
+.nav ul a{position:relative;padding:6px 0}
+.nav ul a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+@media (hover:hover){.nav ul a:hover::after{transform:scaleX(1);transform-origin:left}}
+.nav .btn{padding:11px 18px;font-size:13.5px}
+.lang{display:inline-flex;border:1.5px solid var(--line);border-radius:4px;padding:2px;gap:2px}
+.lang button{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:3px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+.lang button.on{background:var(--ink);color:var(--paper)}
+.flag{width:18px;height:12px;border-radius:1px;overflow:hidden;display:block;flex:none}
+.flag svg{width:100%;height:100%;display:block}
+.burger{display:none;width:44px;height:44px;place-items:center}
+.burger span{display:block;width:22px;height:1.5px;background:var(--ink);position:relative;transition:background .3s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:22px;height:1.5px;background:var(--ink);transition:transform .35s var(--ease),top .35s}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.burger.open span{background:transparent}
+.burger.open span::before{top:0;transform:rotate(45deg)}.burger.open span::after{top:0;transform:rotate(-45deg)}
+.sheet{position:fixed;inset:0;z-index:49;background:var(--paper);display:flex;flex-direction:column;justify-content:center;padding:0 32px;transform:translateY(-100%);transition:transform .5s var(--ease);visibility:hidden}
+.sheet.open{transform:none;visibility:visible}
+.sheet a{font-family:var(--didot);font-size:40px;padding:12px 0;border-bottom:1px solid var(--line)}
+.sheet .lang{align-self:flex-start;margin-top:28px}
+@media (max-width:1040px){.nav ul{display:none}.burger{display:grid}.nav .brand{opacity:1;transform:none}}
+@media (max-width:640px){.brand{font-size:19px}.brand small{display:none}.dateline{font-size:11px;letter-spacing:.12em;gap:8px}.dateline span:nth-child(3){display:none}}
+
+/* ===== MASTHEAD HERO ===== */
+.mast{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:96px 0 40px;position:relative}
+.dateline{display:flex;justify-content:space-between;gap:20px;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--muted);padding:14px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.dateline b{color:var(--accent-ink)}
+.name{padding:18px 0 10px;display:block;overflow:hidden}
+.name h1{font-size:clamp(54px,9.6vw,158px);line-height:.95;white-space:nowrap;letter-spacing:-.02em;transform-origin:left top;will-change:transform}
+.name h1 span{display:inline-block}
+.name h1 .b{color:var(--accent)}
+.below{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:40px;align-items:end;padding-top:24px;border-top:1px solid var(--line);margin-top:10px}
+.below .l p.lead{margin:14px 0 30px}
+.below .cta{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.figure{position:relative;justify-self:center;width:min(100%,460px)}
+.figure img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px 6px 180px 180px;filter:saturate(.9) contrast(1.02)}
+.figure::after{content:"";position:absolute;inset:0;border-radius:6px 6px 180px 180px;background:linear-gradient(170deg,rgba(181,101,74,.14),transparent 40%,rgba(34,66,58,.28));pointer-events:none;mix-blend-mode:multiply}
+.figure .cap{position:absolute;left:-20px;bottom:36px;background:var(--paper);padding:12px 16px;border-left:3px solid var(--accent);font-size:13px;line-height:1.35;box-shadow:0 18px 40px -20px rgba(30,42,43,.4)}
+.figure .cap b{display:block;font-size:14px}
+.creds{display:grid;gap:0}
+.creds li{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.creds li:first-child{border-top:1px solid var(--line)}
+.creds b{display:block;font-family:var(--didot);font-size:22px;line-height:1.1}
+.creds span{font-size:14px;color:var(--muted)}
+html.js .mast .a1{opacity:0;animation:rise .9s var(--ease) .05s forwards}
+html.js .mast .a2{opacity:0;animation:rise 1s var(--ease) .15s forwards}
+html.js .mast .a3{opacity:0;animation:rise .9s var(--ease) .35s forwards}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html.js .mast .a1,html.js .mast .a2,html.js .mast .a3{animation:none;opacity:1}}
+@media (max-width:1040px){
+  .mast{min-height:auto;padding-top:92px}
+  .name h1{white-space:normal;font-size:clamp(50px,13vw,110px)}
+  .below{grid-template-columns:1fr;gap:34px}
+  .figure{order:-1;justify-self:start;width:min(100%,420px)}
+  .figure .cap{left:-8px}
+}
+
+/* ===== PROOF ===== */
+.proof{background:var(--deep);color:var(--on-deep)}
+.proof .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.proof .wrap>div{padding:30px 28px 30px 0;margin-right:28px;border-right:1px solid rgba(238,241,234,.15)}
+.proof .wrap>div:last-child{border:0;margin:0}
+.proof b{display:block;font-family:var(--didot);font-size:34px;line-height:1;margin-bottom:8px;color:#fff}
+.proof span{font-size:13.5px;color:rgba(238,241,234,.72);line-height:1.45;display:block}
+.proof a{border-bottom:1px solid var(--accent-soft);color:#fff}
+@media (max-width:980px){.proof .wrap{grid-template-columns:1fr 1fr}.proof .wrap>div:nth-child(2){border:0;margin:0}.proof .wrap>div{padding:22px 20px 22px 0}}
+@media (max-width:520px){.proof .wrap{grid-template-columns:1fr}.proof .wrap>div{border:0;border-bottom:1px solid rgba(238,241,234,.15);margin:0;padding:18px 0}.proof .wrap>div:last-child{border:0}}
+
+section{padding:120px 0}
+@media (max-width:980px){section{padding:84px 0}}
+.head{display:grid;grid-template-columns:auto 1fr;gap:40px 80px;align-items:end;margin-bottom:64px}
+.head h2{margin-top:16px}
+@media (max-width:980px){.head{grid-template-columns:1fr;gap:18px;margin-bottom:44px}}
+
+/* ===== INTRO (editorial) ===== */
+.intro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.intro p.big{font-family:var(--didot);font-size:clamp(28px,2.8vw,44px);line-height:1.25}
+.intro p.big::first-letter{font-size:2.6em;float:left;line-height:.8;padding:8px 10px 0 0;color:var(--accent)}
+.intro .col p{margin-bottom:22px;color:var(--muted)}
+.intro .col p b{color:var(--ink);font-weight:600}
+.langs{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap}
+.intro .wrap>*{min-width:0}
+.langs>span{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:8px 14px;border:1px solid var(--line);border-radius:4px}
+@media (max-width:980px){.intro .wrap{grid-template-columns:1fr;gap:36px}}
+
+/* ===== SERVICES — TABS ===== */
+.services{background:var(--surface)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.tab{padding:22px 24px 22px 0;text-align:left;display:grid;gap:6px;position:relative;border-right:1px solid var(--line);margin-right:24px;transition:color .3s}
+.tab:last-child{border:0;margin:0}
+.tab .num{transition:color .3s}
+.tab b{font-family:var(--didot);font-size:clamp(20px,1.8vw,26px);line-height:1.1;font-weight:400}
+.tab::after{content:"";position:absolute;left:0;top:-1px;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.tab[aria-selected="true"]::after{transform:scaleX(1)}
+.tab[aria-selected="true"] .num{color:var(--accent)}
+.tab:not([aria-selected="true"]){color:var(--muted)}
+@media (hover:hover){.tab:hover{color:var(--ink)}}
+.panes{position:relative;padding-top:56px}
+.pane{display:none;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.pane.on{display:grid;animation:fadeup .5s var(--ease)}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.pane h3{margin-bottom:18px;font-size:clamp(28px,3vw,44px)}
+.pane p{color:var(--muted);margin-bottom:18px;max-width:60ch}
+.topics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.topic{padding:22px;background:var(--paper);border-radius:6px;border:1px solid var(--line);display:grid;gap:6px;transition:transform .35s var(--ease)}
+.topic b{font-size:15.5px}
+.topic span{font-size:14px;color:var(--muted)}
+@media (hover:hover){.topic:hover{transform:translateY(-3px)}}
+.pane .foot{margin-top:26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.pane .meta{font-size:13.5px;color:var(--muted)}
+@media (max-width:980px){
+  .tabs{grid-template-columns:1fr 1fr}
+  .tab{border:0;margin:0;border-bottom:1px solid var(--line);padding:16px 12px 16px 0}
+  .pane{grid-template-columns:1fr;gap:28px}
+  .topics{grid-template-columns:1fr}
+}
+
+/* ===== PATH — signature interaction ===== */
+.path{position:relative}
+.path .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px}
+.path .sticky{position:sticky;top:110px}
+.path .sticky p{color:var(--muted);margin-top:20px;max-width:40ch}
+.path .prog{margin-top:36px;font-family:var(--didot);font-size:64px;line-height:1;color:var(--accent);display:flex;align-items:baseline;gap:10px}
+.path .prog small{font-family:var(--sans);font-size:13px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.steps{position:relative;padding-left:64px}
+.steps svg.line{position:absolute;left:18px;top:0;width:2px;height:100%;overflow:visible}
+.steps svg.line path{stroke:var(--line);stroke-width:2;fill:none}
+.steps svg.line path.on{stroke:var(--accent);stroke-dasharray:1;stroke-dashoffset:1}
+.step{position:relative;padding:0 0 64px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-54px;top:6px;width:22px;height:22px;border-radius:50%;background:var(--paper);border:2px solid var(--line);display:grid;place-items:center;transition:border-color .4s,background .4s}
+.step .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform .4s var(--ease)}
+.step.on .dot{border-color:var(--accent)}
+.step.on .dot::after{transform:scale(1)}
+.step small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);font-weight:600;margin-bottom:10px}
+.step h3{margin-bottom:12px;transition:color .4s}
+.step p{color:var(--muted);max-width:56ch}
+.step .tip{margin-top:14px;padding:14px 18px;border-left:2px solid var(--accent-soft);font-size:14.5px;color:var(--ink);background:var(--surface);border-radius:0 6px 6px 0}
+@media (max-width:980px){.path .wrap{grid-template-columns:1fr;gap:40px}.path .sticky{position:static}.path .prog{display:none}}
+
+/* ===== ABOUT ===== */
+.about{background:var(--deep);color:var(--on-deep)}
+.about .head h2{color:#fff}
+.about .lead{color:rgba(238,241,234,.72)}
+.about .wrap>.grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.about p{color:rgba(238,241,234,.8);margin-bottom:20px}
+.about .quoteline{font-family:var(--didot);font-size:clamp(24px,2.4vw,34px);line-height:1.3;color:#fff;margin-bottom:26px}
+.exp li{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:18px 0;border-top:1px solid rgba(238,241,234,.15)}
+.exp li:last-child{border-bottom:1px solid rgba(238,241,234,.15)}
+.exp small{font-size:12.5px;letter-spacing:.14em;color:var(--accent-soft);font-weight:600;padding-top:4px}
+.exp b{display:block;font-family:var(--didot);font-size:21px;line-height:1.15;color:#fff;font-weight:400}
+.exp span{font-size:14.5px;color:rgba(238,241,234,.7)}
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.edu div{padding:20px;border:1px solid rgba(238,241,234,.15);border-radius:6px}
+.edu b{display:block;font-family:var(--didot);font-size:22px;color:#fff;font-weight:400;line-height:1.1;margin-bottom:6px}
+.edu span{font-size:13.5px;color:rgba(238,241,234,.7)}
+@media (max-width:980px){.about .wrap>.grid{grid-template-columns:1fr;gap:36px}.edu{grid-template-columns:1fr}.exp li{grid-template-columns:90px 1fr}}
+
+/* ===== REVIEWS — grid wall ===== */
+.reviews .head{align-items:center}
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{padding:36px;border:1px solid var(--line);border-radius:6px;background:var(--paper);display:grid;gap:22px;align-content:space-between;transition:transform .35s var(--ease)}
+.card .q{font-family:var(--didot);font-size:clamp(21px,1.7vw,26px);line-height:1.35}
+.card .q::before{content:"“";color:var(--accent);margin-right:4px}
+.card .who{display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.card .who .stars{color:var(--accent);letter-spacing:2px}
+@media (hover:hover){.card:hover{transform:translateY(-4px)}}
+.badge{display:inline-flex;align-items:center;gap:14px;padding:12px 18px;border:1px solid var(--line);border-radius:4px;font-size:14px;font-weight:600}
+.badge b{font-family:var(--didot);font-size:30px;line-height:1;font-weight:400}
+.badge a{border-bottom:1px solid var(--accent)}
+@media (max-width:760px){.wall{grid-template-columns:1fr}.card{padding:26px}}
+
+/* ===== FAQ band ===== */
+.faq{background:var(--surface)}
+.faq .list{max-width:900px;margin-inline:auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--ink)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:48px 1fr 30px;gap:18px;align-items:center;padding:22px 0;font-family:var(--didot);font-size:clamp(20px,1.8vw,26px);line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .num{align-self:center}
+.faq summary i{width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line);display:grid;place-items:center;color:var(--accent-ink);transition:transform .35s var(--ease)}
+.faq summary i svg{width:14px;height:14px}
+.faq details[open] summary i{transform:rotate(45deg);background:var(--accent-soft)}
+.faq details p{color:var(--muted);padding:0 48px 24px 66px;font-size:16px;max-width:70ch}
+@media (max-width:640px){.faq summary{grid-template-columns:1fr 30px}.faq summary .num{display:none}.faq details p{padding:0 0 22px}}
+
+/* ===== CONTACT split ===== */
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.contact h2{margin:14px 0 18px}
+.info{display:grid;gap:22px;margin-top:36px}
+.info .item{display:grid;grid-template-columns:40px 1fr;gap:14px}
+.info i{width:36px;height:36px;border-radius:6px;background:var(--surface);display:grid;place-items:center;color:var(--accent-ink)}
+.info i svg{width:17px;height:17px}
+.info b{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:4px;font-weight:600}
+.info address{font-style:normal;font-size:17px;line-height:1.5}
+.info span{color:var(--muted);font-size:15px;display:block}
+.map{margin-top:10px;border-radius:6px;overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--surface)}
+.map .bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px}
+.map .pin{position:absolute;left:58%;top:32%;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 10px rgba(181,101,74,.18)}
+.map button{position:absolute;inset:0;display:grid;place-content:center;gap:10px;text-align:center}
+.map button b{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:4px;background:var(--ink);color:var(--paper);font-size:14px;justify-self:center}
+.map button b span{display:inline;color:inherit;font-size:14px}
+.map button>span{font-size:13px;color:var(--muted)}
+.map iframe{width:100%;height:100%;border:0;display:block}
+.form{background:var(--surface);border-radius:6px;padding:36px;position:sticky;top:110px}
+.form h3{margin-bottom:8px}
+.form .note{font-size:14px;color:var(--muted);margin-bottom:22px}
+.field{display:grid;gap:8px;margin-bottom:16px}
+.field label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--accent-ink)}
+.field input,.field textarea,.field select{width:100%;padding:14px 16px;border-radius:4px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;font-size:16px}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.form .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form .ok{display:none;padding:18px;border-radius:6px;background:var(--paper);margin-top:12px}
+.form.sent form{display:none}.form.sent .ok{display:block}
+.form .alt{margin-top:18px;font-size:14px;color:var(--muted)}
+.form .alt a{color:var(--ink);border-bottom:1px solid var(--accent)}
+@media (max-width:980px){.contact .wrap{grid-template-columns:1fr;gap:44px}.form{position:static}.form .row2{grid-template-columns:1fr}}
+
+footer{background:var(--deep-2);color:rgba(238,241,234,.75);padding:56px 0 110px;font-size:14px}
+footer .top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(238,241,234,.12)}
+footer .fb{font-family:var(--didot);font-size:26px;color:#fff;display:block;margin-bottom:12px}
+footer h5{color:#fff;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+footer li{margin-bottom:8px}
+footer address{font-style:normal;line-height:1.7}
+footer .bottom{display:flex;justify-content:space-between;gap:20px;padding-top:24px;flex-wrap:wrap}
+footer .bottom a{color:#fff;border-bottom:1px solid rgba(238,241,234,.3)}
+@media (max-width:980px){footer .top{grid-template-columns:1fr}}
+@media (min-width:981px){footer{padding-bottom:56px}}
+
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:48;display:none;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:6px;border-radius:10px;background:rgba(30,42,43,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 20px 40px -16px rgba(0,0,0,.5)}
+.mbar a{display:grid;place-items:center;gap:4px;padding:10px 4px;border-radius:6px;color:#fff;font-size:11.5px;font-weight:600;letter-spacing:.04em}
+.mbar a.p{background:var(--accent)}
+.mbar svg{width:18px;height:18px}
+@media (max-width:980px){.mbar{display:grid}}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 14px;z-index:100}
+.skip:focus{left:12px;top:12px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-en="Skip to content">Μετάβαση στο περιεχόμενο</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="flag-el" viewBox="0 0 27 18" preserveAspectRatio="xMidYMid slice"><rect width="27" height="18" fill="#0D5EAF"/><g fill="#fff"><rect y="2" width="27" height="2"/><rect y="6" width="27" height="2"/><rect y="10" width="27" height="2"/><rect y="14" width="27" height="2"/></g><rect width="10" height="10" fill="#0D5EAF"/><rect x="4" width="2" height="10" fill="#fff"/><rect y="4" width="10" height="2" fill="#fff"/></symbol>
+  <symbol id="flag-en" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="msg" viewBox="0 0 24 24"><path d="M4 6h16v10H8l-4 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="video" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 11l5-3v8l-5-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+</defs></svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Χριστίνα Ευγενίδου — αρχή σελίδας"><span data-en="Christina Evgenidou">Χριστίνα Ευγενίδου</span><small data-en="Psychologist">Ψυχολόγος</small></a>
+    <ul>
+      <li><a href="#services" data-en="Services">Υπηρεσίες</a></li>
+      <li><a href="#path" data-en="The process">Η πορεία</a></li>
+      <li><a href="#about" data-en="About">Βιογραφικό</a></li>
+      <li><a href="#reviews" data-en="Reviews">Αξιολογήσεις</a></li>
+      <li><a href="#faq" data-en="FAQ">Ερωτήσεις</a></li>
+      <li><div class="lang" role="group" aria-label="Γλώσσα / Language">
+        <button class="on" data-lang="el" aria-pressed="true"><span class="flag"><svg><use href="#flag-el"/></svg></span>EL</button>
+        <button data-lang="en" aria-pressed="false"><span class="flag"><svg><use href="#flag-en"/></svg></span>EN</button>
+      </div></li>
+      <li><a class="btn accent" href="#contact"><span data-en="Book a session">Κλείστε συνεδρία</span></a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Μενού" aria-expanded="false" data-en-aria-label="Menu"><span></span></button>
+  </div>
+</header>
+<div class="sheet" id="sheet">
+  <a href="#services" data-en="Services">Υπηρεσίες</a>
+  <a href="#path" data-en="The process">Η πορεία</a>
+  <a href="#about" data-en="About">Βιογραφικό</a>
+  <a href="#reviews" data-en="Reviews">Αξιολογήσεις</a>
+  <a href="#faq" data-en="FAQ">Ερωτήσεις</a>
+  <a href="#contact" data-en="Contact">Επικοινωνία</a>
+  <div class="lang" role="group" aria-label="Γλώσσα / Language">
+    <button class="on" data-lang="el" aria-pressed="true"><span class="flag"><svg><use href="#flag-el"/></svg></span>EL</button>
+    <button data-lang="en" aria-pressed="false"><span class="flag"><svg><use href="#flag-en"/></svg></span>EN</button>
+  </div>
+</div>
+
+<main id="main">
+<!-- ===== MASTHEAD ===== -->
+<section class="mast" id="top">
+  <div class="wrap">
+    <div class="dateline a1">
+      <span data-en="Psychologist for adolescents & adults · MSc">Ψυχολόγος εφήβων & ενηλίκων · MSc</span>
+      <span><b data-en="Thessaloniki">Θεσσαλονίκη</b> · <span data-en="in person & online">δια ζώσης & online</span></span>
+      <span data-en="Sessions in Greek & English">Συνεδρίες στα ελληνικά & αγγλικά</span>
+    </div>
+    <div class="name a2">
+      <h1 id="mastName" data-en-html="<span>Christina</span> <span class='b'>Evgenidou</span>"><span>Χριστίνα</span> <span class="b">Ευγενίδου</span></h1>
+    </div>
+    <div class="below a3">
+      <div class="l">
+        <span class="kicker" data-en="Cognitive-behavioural therapy">Γνωσιακή-συμπεριφορική θεραπεία</span>
+        <p class="lead" data-en="Ten years beside adolescents, women and adults who wanted things to change. A calm, direct way of working — in the centre of Thessaloniki or by video call.">Δέκα χρόνια δίπλα σε εφήβους, γυναίκες και ενήλικες που ήθελαν κάτι να αλλάξει. Ένας ήρεμος, ευθύς τρόπος δουλειάς — στο κέντρο της Θεσσαλονίκης ή με βιντεοκλήση.</p>
+        <div class="cta">
+          <a class="btn accent" href="#contact"><span data-en="Book your first session">Κλείστε την πρώτη συνεδρία</span><svg><use href="#arrow"/></svg></a>
+          <a class="tlink" href="#path"><span data-en="How therapy unfolds">Πώς εξελίσσεται η θεραπεία</span><svg><use href="#arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="figure">
+        <img src="assets/christina-evgenidou-psychologos-thessaloniki.webp" srcset="assets/christina-evgenidou-psychologos-thessaloniki-480.webp 480w, assets/christina-evgenidou-psychologos-thessaloniki.webp 900w" sizes="(max-width:1040px) 90vw, 460px" width="900" height="900" alt="Η ψυχολόγος Χριστίνα Ευγενίδου" data-en-alt="Psychologist Christina Evgenidou" fetchpriority="high" decoding="async">
+        <div class="cap"><b data-en="Christina Evgenidou, MSc">Χριστίνα Ευγενίδου, MSc</b><span data-en="University of Sheffield · UCL · VU Amsterdam">University of Sheffield · UCL · VU Amsterdam</span></div>
+      </div>
+      <ul class="creds">
+        <li><span class="num">01</span><div><b>University of Sheffield</b><span data-en="BSc Psychology">Πτυχίο Ψυχολογίας</span></div></li>
+        <li><span class="num">02</span><div><b>University College London</b><span data-en="MSc Brain Sciences">MSc Brain Sciences</span></div></li>
+        <li><span class="num">03</span><div><b>Vrije Universiteit</b><span data-en="MSc Law">MSc Law</span></div></li>
+        <li><span class="num">04</span><div><b>doctoranytime</b><span><span class="stars" style="color:var(--accent)">★★★★★</span> 10/10 · <a href="https://www.doctoranytime.gr/d/Psychologos/eugenidou-xristina" target="_blank" rel="noopener" style="border-bottom:1px solid var(--accent)" data-en="patient reviews">αξιολογήσεις ασθενών</a></span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROOF ===== -->
+<div class="proof">
+  <div class="wrap">
+    <div class="sr"><b>10</b><span data-en="years of clinical experience with adolescents, women and adults">χρόνια κλινικής εμπειρίας με εφήβους, γυναίκες και ενήλικες</span></div>
+    <div class="sr d1"><b>3</b><span data-en="degrees from the UK and the Netherlands — Psychology, Brain Sciences, Law">πτυχία από Αγγλία και Ολλανδία — Ψυχολογία, Νευροεπιστήμες, Νομική</span></div>
+    <div class="sr d2"><b>EL · EN</b><span data-en="sessions in Greek or English, for locals, expats and international students">συνεδρίες στα ελληνικά ή τα αγγλικά, για ντόπιους, expats και διεθνείς φοιτητές</span></div>
+    <div class="sr d3"><b>50′</b><span data-en="individual sessions, in person or by video call · card, cash or Klarna">ατομικές συνεδρίες, δια ζώσης ή με βιντεοκλήση · κάρτα, μετρητά ή Klarna</span></div>
+  </div>
+</div>
+
+<!-- ===== INTRO ===== -->
+<section class="intro">
+  <div class="wrap">
+    <p class="big sr" data-en="Most people arrive with a question they have carried alone for too long. The first thing we do is put it on the table — calmly, without judgement — and look at it together.">Οι περισσότεροι έρχονται με μια ερώτηση που κουβαλούν μόνοι τους πολύ καιρό. Το πρώτο που κάνουμε είναι να την αφήσουμε στο τραπέζι — ήρεμα, χωρίς κριτική — και να την κοιτάξουμε μαζί.</p>
+    <div class="col">
+      <p class="sr d1" data-en-html="Christina Evgenidou is a licensed psychologist for adolescents and adults with a private practice in the centre of Thessaloniki. She trained in the United Kingdom and the Netherlands and has spent the last ten years working where the need is greatest: with <b>teenagers</b> (Greek and with a refugee or migrant background), with <b>women who have experienced domestic violence</b>, and with adults facing anxiety, panic, eating difficulties and personality-related struggles."><b>Η Χριστίνα Ευγενίδου</b> είναι αδειούχος ψυχολόγος εφήβων και ενηλίκων με ιδιωτικό γραφείο στο κέντρο της Θεσσαλονίκης. Σπούδασε στην Αγγλία και την Ολλανδία και τα τελευταία δέκα χρόνια δουλεύει εκεί όπου η ανάγκη είναι μεγαλύτερη: με <b>εφήβους</b> (Έλληνες και με προσφυγικό ή μεταναστευτικό προφίλ), με <b>γυναίκες που έχουν βιώσει ενδοοικογενειακή βία</b> και με ενήλικες που αντιμετωπίζουν άγχος, πανικό, διατροφικές δυσκολίες και ζητήματα προσωπικότητας.</p>
+      <p class="sr d2" data-en="Her approach is cognitive-behavioural: structured, practical and focused on the present. Sessions take place in person or online, in Greek or in English.">Η προσέγγισή της είναι γνωσιακή-συμπεριφορική: δομημένη, πρακτική και εστιασμένη στο παρόν. Οι συνεδρίες γίνονται δια ζώσης ή online, στα ελληνικά ή στα αγγλικά.</p>
+      <div class="langs sr d3"><span><span class="flag"><svg><use href="#flag-el"/></svg></span><span data-en="Greek">Ελληνικά</span></span><span><span class="flag"><svg><use href="#flag-en"/></svg></span>English</span><span><svg style="width:16px;height:16px;color:var(--accent-ink)"><use href="#video"/></svg><span data-en="Online">Online</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES (tabs) ===== -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker sr" data-en="Services">Υπηρεσίες</span><h2 class="sr d1" data-en="Who I work with">Με ποιους δουλεύω</h2></div>
+      <p class="lead sr d2" data-en="Individual 50-minute sessions, in person or by video call. Choose the group that fits you to see what we can work on.">Ατομικές συνεδρίες 50 λεπτών, δια ζώσης ή με βιντεοκλήση. Επιλέξτε την ομάδα που σας ταιριάζει για να δείτε σε τι μπορούμε να δουλέψουμε.</p>
+    </div>
+    <div class="tabs sr" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-t="adults"><span class="num">01</span><b data-en="Adults">Ενήλικες</b></button>
+      <button class="tab" role="tab" aria-selected="false" data-t="teens"><span class="num">02</span><b data-en="Adolescents">Έφηβοι</b></button>
+      <button class="tab" role="tab" aria-selected="false" data-t="women"><span class="num">03</span><b data-en="Women">Γυναίκες</b></button>
+      <button class="tab" role="tab" aria-selected="false" data-t="online"><span class="num">04</span><b data-en="Online & assessment">Online & τεστ</b></button>
+    </div>
+    <div class="panes">
+      <div class="pane on" data-p="adults" role="tabpanel">
+        <div>
+          <h3 data-en="Anxiety, panic and the patterns that keep them going">Άγχος, πανικός και τα μοτίβα που τα συντηρούν</h3>
+          <p data-en="Persistent worry, panic attacks, specific phobias, stress that spills into sleep and relationships, or long-standing patterns in how you relate to yourself and others. Cognitive-behavioural therapy works on what keeps the problem alive today: the thoughts, the avoidance, the rules you live by without noticing. It is structured — we set goals, we practise between sessions, and we measure change.">Επίμονη ανησυχία, κρίσεις πανικού, συγκεκριμένες φοβίες, στρες που χύνεται στον ύπνο και στις σχέσεις, ή χρόνια μοτίβα στον τρόπο που σχετίζεστε με τον εαυτό σας και τους άλλους. Η γνωσιακή-συμπεριφορική θεραπεία δουλεύει ό,τι κρατά το πρόβλημα ζωντανό σήμερα: τις σκέψεις, την αποφυγή, τους κανόνες με τους οποίους ζείτε χωρίς να το προσέχετε. Είναι δομημένη — θέτουμε στόχους, εξασκούμαστε ανάμεσα στις συνεδρίες και μετράμε την αλλαγή.</p>
+          <p data-en="Eating difficulties and weight-related distress are approached the same way: without moralising about food, with attention to the thoughts and emotions behind the behaviour.">Οι διατροφικές δυσκολίες και η δυσφορία γύρω από το βάρος προσεγγίζονται με τον ίδιο τρόπο: χωρίς ηθικολογία για το φαγητό, με προσοχή στις σκέψεις και τα συναισθήματα πίσω από τη συμπεριφορά.</p>
+          <div class="foot"><a class="btn line" href="#contact"><span data-en="Book a session">Κλείστε συνεδρία</span><svg><use href="#arrow"/></svg></a><span class="meta" data-en="50 minutes · in person or online">50 λεπτά · δια ζώσης ή online</span></div>
+        </div>
+        <div class="topics">
+          <div class="topic"><b data-en="Anxiety disorders">Αγχώδεις διαταραχές</b><span data-en="Generalised anxiety, health anxiety, social anxiety">Γενικευμένο άγχος, άγχος υγείας, κοινωνικό άγχος</span></div>
+          <div class="topic"><b data-en="Panic attacks & phobias">Κρίσεις πανικού & φοβίες</b><span data-en="Understanding the cycle, gradual exposure">Κατανόηση του κύκλου, σταδιακή έκθεση</span></div>
+          <div class="topic"><b data-en="Eating disorders & obesity">Διατροφικές διαταραχές & παχυσαρκία</b><span data-en="Behaviour, emotion and self-image, together">Συμπεριφορά, συναίσθημα και αυτοεικόνα, μαζί</span></div>
+          <div class="topic"><b data-en="Personality difficulties">Ζητήματα προσωπικότητας</b><span data-en="Long-standing patterns in relationships and self-worth">Χρόνια μοτίβα στις σχέσεις και την αυτοαξία</span></div>
+        </div>
+      </div>
+      <div class="pane" data-p="teens" role="tabpanel">
+        <div>
+          <h3 data-en="A space that is theirs — and clear guidance for parents">Ένας χώρος που είναι δικός τους — και καθαρή καθοδήγηση για τους γονείς</h3>
+          <p data-en="Adolescence can bring school and exam anxiety, sudden changes in mood, withdrawal, conflict at home, difficulties with friends or with food and body image. Christina has spent years working with teenagers — including young people with a refugee or migrant background — as a psychologist, youth programme manager and child-protection officer. Teenagers get a confidential space of their own; parents get a separate, practical conversation about what is happening and how to help without pushing.">Η εφηβεία μπορεί να φέρει άγχος για το σχολείο και τις εξετάσεις, απότομες αλλαγές στη διάθεση, απομόνωση, συγκρούσεις στο σπίτι, δυσκολίες με τους φίλους ή με το φαγητό και την εικόνα σώματος. Η Χριστίνα έχει δουλέψει χρόνια με εφήβους — και με νέους με προσφυγικό ή μεταναστευτικό προφίλ — ως ψυχολόγος, υπεύθυνη προγραμμάτων νέων και υπεύθυνη παιδικής προστασίας. Οι έφηβοι έχουν έναν εμπιστευτικό χώρο δικό τους· οι γονείς μια ξεχωριστή, πρακτική συζήτηση για το τι συμβαίνει και πώς να βοηθήσουν χωρίς να πιέζουν.</p>
+          <div class="foot"><a class="btn line" href="#contact"><span data-en="Ask about your teenager">Ρωτήστε για τον έφηβό σας</span><svg><use href="#arrow"/></svg></a><span class="meta" data-en="First contact is usually with the parents">Η πρώτη επαφή γίνεται συνήθως με τους γονείς</span></div>
+        </div>
+        <div class="topics">
+          <div class="topic"><b data-en="School & exam anxiety">Σχολικό άγχος & εξετάσεις</b><span data-en="Pressure, procrastination, panic before tests">Πίεση, αναβλητικότητα, πανικός πριν τα διαγωνίσματα</span></div>
+          <div class="topic"><b data-en="Mood & withdrawal">Διάθεση & απομόνωση</b><span data-en="When the door stays shut">Όταν η πόρτα μένει κλειστή</span></div>
+          <div class="topic"><b data-en="Body image & eating">Εικόνα σώματος & φαγητό</b><span data-en="Early, careful support">Έγκαιρη, προσεκτική στήριξη</span></div>
+          <div class="topic"><b data-en="Parent guidance">Καθοδήγηση γονέων</b><span data-en="What to say, what to avoid, how to stay close">Τι να πείτε, τι να αποφύγετε, πώς να μείνετε κοντά</span></div>
+        </div>
+      </div>
+      <div class="pane" data-p="women" role="tabpanel">
+        <div>
+          <h3 data-en="Empowerment, safety and a way back to yourself">Ενδυνάμωση, ασφάλεια και ένας δρόμος πίσω στον εαυτό σας</h3>
+          <p data-en="As safety and protection coordinator at the women's centre “Irida”, Christina worked daily with women who had experienced domestic violence, control or coercion. That experience shapes a way of working that is patient, safe and never rushed. Whether you are still inside a difficult situation or rebuilding after it, therapy focuses on regaining your voice, your boundaries and your confidence — step by step, at a pace you set.">Ως υπεύθυνη ασφάλειας και προστασίας στο Κέντρο Γυναικών «Ιρίδα», η Χριστίνα δούλευε καθημερινά με γυναίκες που είχαν βιώσει ενδοοικογενειακή βία, έλεγχο ή εξαναγκασμό. Αυτή η εμπειρία διαμορφώνει έναν τρόπο δουλειάς υπομονετικό, ασφαλή και ποτέ βιαστικό. Είτε βρίσκεστε ακόμη μέσα σε μια δύσκολη κατάσταση είτε ξαναχτίζετε μετά από αυτήν, η θεραπεία εστιάζει στο να ξαναβρείτε τη φωνή σας, τα όριά σας και την αυτοπεποίθησή σας — βήμα βήμα, με ρυθμό που ορίζετε εσείς.</p>
+          <div class="foot"><a class="btn line" href="#contact"><span data-en="Reach out confidentially">Επικοινωνήστε εμπιστευτικά</span><svg><use href="#arrow"/></svg></a><span class="meta" data-en="Online sessions available when leaving home is difficult">Online συνεδρίες όταν είναι δύσκολο να βγείτε από το σπίτι</span></div>
+        </div>
+        <div class="topics">
+          <div class="topic"><b data-en="After domestic violence">Μετά την ενδοοικογενειακή βία</b><span data-en="Safety first, then recovery">Πρώτα ασφάλεια, μετά αποκατάσταση</span></div>
+          <div class="topic"><b data-en="Boundaries & assertiveness">Όρια & διεκδικητικότητα</b><span data-en="Saying no without guilt">Να λέτε όχι χωρίς ενοχές</span></div>
+          <div class="topic"><b data-en="Self-worth">Αυτοαξία</b><span data-en="Rebuilding confidence that was worn down">Ξαναχτίζοντας την αυτοπεποίθηση που φθάρηκε</span></div>
+          <div class="topic"><b data-en="Life transitions">Μεταβάσεις ζωής</b><span data-en="Separation, motherhood, a new start">Χωρισμός, μητρότητα, μια νέα αρχή</span></div>
+        </div>
+      </div>
+      <div class="pane" data-p="online" role="tabpanel">
+        <div>
+          <h3 data-en="Sessions by video call, and a clear answer about your career">Συνεδρίες με βιντεοκλήση, και μια καθαρή απάντηση για την καριέρα σας</h3>
+          <p data-en="Online sessions follow exactly the same structure and confidentiality as sessions at the office, and suit people who live outside Thessaloniki, travel often, or simply prefer the privacy of their own space. They are also the natural choice for expats and international students who want therapy in English.">Οι online συνεδρίες έχουν ακριβώς την ίδια δομή και εμπιστευτικότητα με τις συνεδρίες στο γραφείο και ταιριάζουν σε όσους ζουν εκτός Θεσσαλονίκης, ταξιδεύουν συχνά ή απλώς προτιμούν την ιδιωτικότητα του δικού τους χώρου. Είναι επίσης η φυσική επιλογή για expats και διεθνείς φοιτητές που θέλουν θεραπεία στα αγγλικά.</p>
+          <p data-en="For adolescents and young adults choosing a direction, the “Ariston” career aptitude assessment (150 minutes) maps interests, abilities and personality into concrete study and career paths.">Για εφήβους και νέους που επιλέγουν κατεύθυνση, το τεστ επαγγελματικού προσανατολισμού «Άριστον» (150 λεπτά) χαρτογραφεί ενδιαφέροντα, ικανότητες και προσωπικότητα σε συγκεκριμένες σπουδές και επαγγελματικούς δρόμους.</p>
+          <div class="foot"><a class="btn line" href="#contact"><span data-en="Book online">Κλείστε online συνεδρία</span><svg><use href="#arrow"/></svg></a><span class="meta" data-en="Video call · Greek or English">Βιντεοκλήση · ελληνικά ή αγγλικά</span></div>
+        </div>
+        <div class="topics">
+          <div class="topic"><b data-en="Video-call sessions">Συνεδρίες με βιντεοκλήση</b><span data-en="50 minutes, same structure as in person">50 λεπτά, ίδια δομή με τις δια ζώσης</span></div>
+          <div class="topic"><b data-en="Therapy in English">Θεραπεία στα αγγλικά</b><span data-en="For expats and international students">Για expats και διεθνείς φοιτητές</span></div>
+          <div class="topic"><b data-en="“Ariston” career assessment">Τεστ «Άριστον»</b><span data-en="150 minutes, followed by an analysis of the results">150 λεπτά, με ανάλυση των αποτελεσμάτων</span></div>
+          <div class="topic"><b data-en="Flexible payment">Ευέλικτη πληρωμή</b><span data-en="Card, cash or Klarna">Κάρτα, μετρητά ή Klarna</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATH (signature interaction) ===== -->
+<section class="path" id="path">
+  <div class="wrap">
+    <div class="sticky">
+      <span class="kicker sr" data-en="How therapy unfolds">Πώς εξελίσσεται η θεραπεία</span>
+      <h2 class="sr d1" data-en="The path, from the first message to the last session.">Η πορεία, από το πρώτο μήνυμα ως την τελευταία συνεδρία.</h2>
+      <p class="sr d2" data-en="No mystery. This is what actually happens, so you know what you are saying yes to.">Χωρίς μυστήριο. Αυτό ακριβώς συμβαίνει, ώστε να ξέρετε σε τι λέτε «ναι».</p>
+      <div class="prog sr d3" aria-hidden="true"><span id="progN">01</span><small id="progT">/ 05</small></div>
+    </div>
+    <div class="steps" id="steps">
+      <svg class="line" aria-hidden="true" viewBox="0 0 2 100" preserveAspectRatio="none"><path d="M1 0V100"/><path class="on" id="pathOn" d="M1 0V100" pathLength="1"/></svg>
+      <div class="step"><span class="dot"></span><small data-en="Step 01">Βήμα 01</small><h3 data-en="First contact">Πρώτη επαφή</h3><p data-en="You write a few lines or book a slot. Christina replies within one working day to arrange the first session — in person or online, in Greek or in English. No forms, no questionnaires yet.">Γράφετε δυο γραμμές ή κλείνετε ώρα. Η Χριστίνα απαντά μέσα σε μία εργάσιμη ημέρα για να κανονίσετε την πρώτη συνεδρία — δια ζώσης ή online, στα ελληνικά ή στα αγγλικά. Χωρίς φόρμες, χωρίς ερωτηματολόγια ακόμη.</p></div>
+      <div class="step"><span class="dot"></span><small data-en="Step 02">Βήμα 02</small><h3 data-en="The first session">Η πρώτη συνεδρία</h3><p data-en="Fifty minutes to tell the story in your own words. What brought you here, what you have already tried, what you would like to be different. You leave with a first understanding of the problem and a sense of whether this is the right fit.">Πενήντα λεπτά για να πείτε την ιστορία με τα δικά σας λόγια. Τι σας έφερε εδώ, τι έχετε ήδη δοκιμάσει, τι θα θέλατε να είναι διαφορετικό. Φεύγετε με μια πρώτη κατανόηση του προβλήματος και μια αίσθηση για το αν ταιριάζουμε.</p><div class="tip" data-en="Adolescents: the first meeting is usually with the parents, then the teenager has their own sessions.">Έφηβοι: η πρώτη συνάντηση γίνεται συνήθως με τους γονείς, έπειτα ο έφηβος έχει τις δικές του συνεδρίες.</div></div>
+      <div class="step"><span class="dot"></span><small data-en="Step 03">Βήμα 03</small><h3 data-en="A shared plan">Ένα κοινό πλάνο</h3><p data-en="Within the first two or three sessions we agree on concrete goals and on how we will know we are getting there. Cognitive-behavioural therapy is goal-focused, which is also why it is usually shorter than other approaches.">Μέσα στις δύο-τρεις πρώτες συνεδρίες συμφωνούμε σε συγκεκριμένους στόχους και στο πώς θα ξέρουμε ότι πλησιάζουμε. Η γνωσιακή-συμπεριφορική θεραπεία είναι προσανατολισμένη σε στόχους, γι' αυτό και είναι συνήθως συντομότερη από άλλες προσεγγίσεις.</p></div>
+      <div class="step"><span class="dot"></span><small data-en="Step 04">Βήμα 04</small><h3 data-en="The work">Η δουλειά</h3><p data-en="Weekly sessions, usually. We work on the thoughts and behaviours that keep the problem going, you practise between sessions, and we adjust the plan as things move. Progress is reviewed openly — you always know where you stand.">Εβδομαδιαίες συνεδρίες, συνήθως. Δουλεύουμε τις σκέψεις και τις συμπεριφορές που συντηρούν το πρόβλημα, εξασκείστε ανάμεσα στις συνεδρίες και προσαρμόζουμε το πλάνο καθώς τα πράγματα κινούνται. Η πρόοδος επανεξετάζεται ανοιχτά — ξέρετε πάντα πού βρίσκεστε.</p></div>
+      <div class="step"><span class="dot"></span><small data-en="Step 05">Βήμα 05</small><h3 data-en="Closing — and keeping what you gained">Ολοκλήρωση — και διατήρηση όσων κερδίσατε</h3><p data-en="We space the sessions out, prepare for the situations that used to trip you up, and close when you are ready. The door stays open for a check-in whenever you need it.">Αραιώνουμε τις συνεδρίες, προετοιμαζόμαστε για τις καταστάσεις που παλιά σας έριχναν, και κλείνουμε όταν είστε έτοιμοι. Η πόρτα μένει ανοιχτή για μια συνάντηση ελέγχου όποτε τη χρειαστείτε.</p><div class="tip" data-en="Cancellations up to 3 hours before a session are free of charge.">Ακυρώσεις έως 3 ώρες πριν τη συνεδρία γίνονται χωρίς χρέωση.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker sr" style="color:var(--accent-soft)" data-en="About">Βιογραφικό</span><h2 class="sr d1" data-en="Where the experience comes from">Από πού έρχεται η εμπειρία</h2></div>
+      <p class="lead sr d2" data-en="Ten years across international organisations, a women's centre and a youth treatment network — before and alongside private practice.">Δέκα χρόνια σε διεθνείς οργανισμούς, ένα κέντρο γυναικών και ένα δίκτυο θεραπείας νέων — πριν και παράλληλα με το ιδιωτικό γραφείο.</p>
+    </div>
+    <div class="grid">
+      <div>
+        <p class="quoteline sr" data-en="Ten years in the field before the private practice: that is where one learns to listen accurately and to offer tools that actually work.">Δέκα χρόνια στο πεδίο πριν το ιδιωτικό γραφείο: εκεί μαθαίνει κανείς να ακούει με ακρίβεια και να δίνει εργαλεία που πραγματικά δουλεύουν.</p>
+        <p class="sr d1" data-en="Christina Evgenidou holds a BSc in Psychology from the University of Sheffield, an MSc in Brain Sciences from University College London and an MSc in Law from the Vrije Universiteit. She is licensed to practise psychology in Greece and works in Greek and English.">Η Χριστίνα Ευγενίδου είναι πτυχιούχος Ψυχολογίας του University of Sheffield, κάτοχος MSc Brain Sciences από το University College London και MSc Law από το Vrije Universiteit. Έχει άδεια ασκήσεως επαγγέλματος ψυχολόγου στην Ελλάδα και εργάζεται στα ελληνικά και στα αγγλικά.</p>
+        <div class="edu sr d2">
+          <div><b>Sheffield</b><span data-en="BSc Psychology · 2010–2013">Πτυχίο Ψυχολογίας · 2010–2013</span></div>
+          <div><b>UCL</b><span data-en="MSc Brain Sciences · 2014–2015">MSc Brain Sciences · 2014–2015</span></div>
+          <div><b>VU</b><span data-en="MSc Law · 2019–2020">MSc Law · 2019–2020</span></div>
+        </div>
+      </div>
+      <ul class="exp">
+        <li class="sr"><small data-en="today">σήμερα</small><div><b data-en="Private practice, Thessaloniki">Ιδιωτικό γραφείο, Θεσσαλονίκη</b><span data-en="Adolescents and adults, in person and online.">Έφηβοι και ενήλικες, δια ζώσης και online.</span></div></li>
+        <li class="sr"><small>2023–2025</small><div><b data-en="Women's Centre “Irida”">Κέντρο Γυναικών «Ιρίδα»</b><span data-en="Safety & Protection Coordinator — support for women who experienced domestic violence.">Υπεύθυνη Ασφάλειας & Προστασίας — στήριξη γυναικών που βίωσαν ενδοοικογενειακή βία.</span></div></li>
+        <li class="sr"><small>2021–2023</small><div><b data-en="Amna treatment network">Δίκτυο Θεραπείας Amna</b><span data-en="Youth programme manager — psychosocial support for young people.">Υπεύθυνη προγράμματος για νέους — ψυχοκοινωνική στήριξη νέων.</span></div></li>
+        <li class="sr"><small>2018–2021</small><div><b data-en="International Organization for Migration">Διεθνής Οργανισμός Μετανάστευσης</b><span data-en="Psychologist, later facilities coordinator.">Ψυχολόγος, έπειτα συντονίστρια εγκαταστάσεων.</span></div></li>
+        <li class="sr"><small>2017–2018</small><div><b>International Rescue Committee Hellas</b><span data-en="Child Protection Officer.">Υπεύθυνη Προστασίας Παιδιών.</span></div></li>
+        <li class="sr"><small data-en="licence">άδεια</small><div><b>ΔΔΥΚΜ/ΜΕΘ 265479(10712)</b><span data-en="Licensed psychologist · member of the DO+ network">Αδειούχος ψυχολόγος · μέλος του δικτύου DO+</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker sr" data-en="Reviews">Αξιολογήσεις</span><h2 class="sr d1" data-en="In their words">Με τα δικά τους λόγια</h2></div>
+      <div class="badge sr d2"><span class="stars" style="color:var(--accent);letter-spacing:2px">★★★★★</span><b>10<span style="font-family:var(--sans);font-size:13px">/10</span></b><a href="https://www.doctoranytime.gr/d/Psychologos/eugenidou-xristina" target="_blank" rel="noopener" data-en="All patient reviews on doctoranytime →">Όλες οι αξιολογήσεις ασθενών στο doctoranytime →</a></div>
+    </div>
+    <div class="wall">
+      <div class="card sr"><p class="q" data-en="An exceptional professional. She made me feel at ease very quickly and gave me a sense of safety. She listened carefully and I never felt judged.">Εξαιρετική επαγγελματίας, με έκανε να νιώσω άνετα πολύ γρήγορα και μου δημιούργησε αίσθημα ασφάλειας. Άκουσε με προσοχή και δεν ένιωσα κριτική.</p><div class="who"><span data-en="Nikos · doctoranytime">Νίκος · doctoranytime</span><span class="stars">★★★★★</span></div></div>
+      <div class="card sr d1"><p class="q" data-en="I don't know how she does it every time. From the very first moment I felt safe to express what I think and feel!">Δεν ξέρω πώς το κάνει κάθε φορά. Από την πρώτη στιγμή ένιωσα ασφάλεια να εκφράσω όσα σκέφτομαι και νιώθω!</p><div class="who"><span data-en="Anastasia · doctoranytime">Αναστασία · doctoranytime</span><span class="stars">★★★★★</span></div></div>
+      <div class="card sr d2"><p class="q">Christina is my therapist for over a year now and she helped me a lot. She is an amazing empathetic therapist. I definitely recommend her.</p><div class="who"><span>Kris · doctoranytime</span><span class="stars">★★★★★</span></div></div>
+      <div class="card sr d3"><p class="q" data-en="An exceptional professional. Empathetic, with a direct approach to my problem. Grateful.">Εξαιρετική επαγγελματίας. Με ενσυναίσθηση και ευθύβολη προσέγγιση. Ευγνώμων.</p><div class="who"><span data-en="Kalliopi · doctoranytime">Καλλιόπη · doctoranytime</span><span class="stars">★★★★★</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="head" style="grid-template-columns:1fr;text-align:center;margin-bottom:48px">
+      <div><span class="kicker sr" data-en="Frequently asked questions">Συχνές ερωτήσεις</span><h2 class="sr d1" data-en="Before you book">Πριν κλείσετε ραντεβού</h2></div>
+    </div>
+    <div class="list">
+      <details class="sr"><summary><span class="num">01</span><span data-en="How long is a session and how much does it cost?">Πόσο διαρκεί μια συνεδρία και πόσο κοστίζει;</span><i><svg><use href="#plus"/></svg></i></summary><p data-en="Sessions last 50 minutes; the career aptitude assessment lasts 150 minutes. The fee is confirmed when you book, before the first session, so there are no surprises. Card, cash and Klarna are accepted.">Οι συνεδρίες διαρκούν 50 λεπτά· το τεστ επαγγελματικού προσανατολισμού 150 λεπτά. Το κόστος επιβεβαιώνεται όταν κλείνετε ραντεβού, πριν την πρώτη συνεδρία, ώστε να μην υπάρχουν εκπλήξεις. Δεκτές πληρωμές με κάρτα, μετρητά και Klarna.</p></details>
+      <details class="sr"><summary><span class="num">02</span><span data-en="Can we do therapy in English?">Μπορούμε να κάνουμε θεραπεία στα αγγλικά;</span><i><svg><use href="#plus"/></svg></i></summary><p data-en="Yes. Christina studied and trained in the UK and the Netherlands and works fluently in English. Sessions in English suit expats, international students, or anyone who simply finds it easier to talk about certain things in English.">Ναι. Η Χριστίνα σπούδασε και εκπαιδεύτηκε σε Αγγλία και Ολλανδία και εργάζεται άνετα στα αγγλικά. Οι συνεδρίες στα αγγλικά ταιριάζουν σε expats, διεθνείς φοιτητές ή σε όποιον απλώς βρίσκει ευκολότερο να μιλά για κάποια πράγματα στα αγγλικά.</p></details>
+      <details class="sr"><summary><span class="num">03</span><span data-en="Are online sessions as effective as in person?">Είναι οι online συνεδρίες εξίσου αποτελεσματικές με τις δια ζώσης;</span><i><svg><use href="#plus"/></svg></i></summary><p data-en="For cognitive-behavioural therapy, yes — research consistently shows comparable results. What matters is a quiet, private space and a stable connection. You can also combine the two, for example in person at the start and online when travelling.">Για τη γνωσιακή-συμπεριφορική θεραπεία, ναι — η έρευνα δείχνει σταθερά συγκρίσιμα αποτελέσματα. Αυτό που μετράει είναι ένας ήσυχος, ιδιωτικός χώρος και μια σταθερή σύνδεση. Μπορείτε επίσης να συνδυάσετε τα δύο, π.χ. δια ζώσης στην αρχή και online όταν ταξιδεύετε.</p></details>
+      <details class="sr"><summary><span class="num">04</span><span data-en="My teenager does not want to come. What can I do?">Ο έφηβός μου δεν θέλει να έρθει. Τι μπορώ να κάνω;</span><i><svg><use href="#plus"/></svg></i></summary><p data-en="This is very common. Start with a parents-only session: we look at what is happening and how you can approach the subject at home. Teenagers usually come once they understand the space is theirs and confidential — and that nobody is going to “fix” them.">Είναι πολύ συνηθισμένο. Ξεκινήστε με μια συνεδρία μόνο για γονείς: εξετάζουμε τι συμβαίνει και πώς μπορείτε να θίξετε το θέμα στο σπίτι. Οι έφηβοι συνήθως έρχονται μόλις καταλάβουν ότι ο χώρος είναι δικός τους και εμπιστευτικός — και ότι κανείς δεν πρόκειται να τους «διορθώσει».</p></details>
+      <details class="sr"><summary><span class="num">05</span><span data-en="How many sessions will I need?">Πόσες συνεδρίες θα χρειαστώ;</span><i><svg><use href="#plus"/></svg></i></summary><p data-en="It depends on the problem and on your goals. Because CBT is goal-focused and structured, it is usually shorter than other approaches. We agree on a plan within the first sessions and review it regularly.">Εξαρτάται από το πρόβλημα και τους στόχους σας. Επειδή η CBT είναι δομημένη και προσανατολισμένη σε στόχους, είναι συνήθως συντομότερη από άλλες προσεγγίσεις. Συμφωνούμε ένα πλάνο μέσα στις πρώτες συνεδρίες και το επανεξετάζουμε τακτικά.</p></details>
+      <details class="sr"><summary><span class="num">06</span><span data-en="What is the “Ariston” career assessment?">Τι είναι το τεστ επαγγελματικού προσανατολισμού «Άριστον»;</span><i><svg><use href="#plus"/></svg></i></summary><p data-en="A 150-minute assessment for adolescents and young adults that maps interests, abilities and personality traits into concrete study and career directions. The results are then analysed together with the young person and the family.">Ένα τεστ 150 λεπτών για εφήβους και νέους που χαρτογραφεί ενδιαφέροντα, ικανότητες και χαρακτηριστικά προσωπικότητας σε συγκεκριμένες κατευθύνσεις σπουδών και καριέρας. Τα αποτελέσματα αναλύονται στη συνέχεια μαζί με τον νέο και την οικογένεια.</p></details>
+      <details class="sr"><summary><span class="num">07</span><span data-en="Is everything confidential?">Είναι όλα εμπιστευτικά;</span><i><svg><use href="#plus"/></svg></i></summary><p data-en="Yes. Confidentiality is protected by the psychologist's code of ethics and the law. Nothing is shared without your consent, except in the rare cases where the law requires it to protect life. With adolescents, the limits of confidentiality are explained clearly from the start.">Ναι. Η εμπιστευτικότητα προστατεύεται από τον κώδικα δεοντολογίας του ψυχολόγου και τον νόμο. Τίποτα δεν κοινοποιείται χωρίς τη συγκατάθεσή σας, εκτός από τις σπάνιες περιπτώσεις που ο νόμος το απαιτεί για την προστασία της ζωής. Με τους εφήβους, τα όρια της εμπιστευτικότητας εξηγούνται καθαρά από την αρχή.</p></details>
+      <details class="sr"><summary><span class="num">08</span><span data-en="What if I need to cancel?">Τι γίνεται αν χρειαστεί να ακυρώσω;</span><i><svg><use href="#plus"/></svg></i></summary><p data-en="Let us know up to 3 hours before the session and it is moved at no charge. Sessions paid online in advance are refunded when cancelled in time.">Ενημερώστε μας έως 3 ώρες πριν τη συνεδρία και μεταφέρεται χωρίς χρέωση. Συνεδρίες που έχουν πληρωθεί online εκ των προτέρων επιστρέφονται όταν ακυρωθούν εγκαίρως.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="kicker sr" data-en="Contact">Επικοινωνία</span>
+      <h2 class="sr d1" data-en="Start with a few lines.">Ξεκινήστε με δυο γραμμές.</h2>
+      <p class="lead sr d2" data-en="Write what brings you here, or book a slot directly. You will hear back within one working day.">Γράψτε τι σας φέρνει εδώ, ή κλείστε απευθείας ώρα. Θα λάβετε απάντηση μέσα σε μία εργάσιμη ημέρα.</p>
+      <div class="info">
+        <div class="item sr"><i><svg><use href="#pin"/></svg></i><div><b data-en="Office">Γραφείο</b><address>Βασιλέως Ηρακλείου 37-39<br>Θεσσαλονίκη</address><span data-en="In the city centre between Aristotelous and Agias Sofias, a few steps from Tsimiski. Nearest metro: Agia Sofia and Venizelou. No parking on site.">Στο κέντρο, ανάμεσα στην Αριστοτέλους και την Αγίας Σοφίας, λίγα βήματα από την Τσιμισκή. Κοντινότερο μετρό: Αγία Σοφία και Βενιζέλου. Δεν διαθέτει πάρκινγκ.</span></div></div>
+        <div class="item sr d1"><i><svg><use href="#clock"/></svg></i><div><b data-en="Hours">Ωράριο</b><span data-en="By appointment · in person or by video call">Κατόπιν ραντεβού · δια ζώσης ή με βιντεοκλήση</span></div></div>
+        <div class="item sr d2"><i><svg><use href="#globe"/></svg></i><div><b data-en="Languages">Γλώσσες</b><span data-en="Greek · English">Ελληνικά · Αγγλικά</span></div></div>
+        <div class="item sr d3"><i><svg><use href="#cal"/></svg></i><div><b data-en="Book online">Online κράτηση</b><span><a href="https://www.doctoranytime.gr/d/Psychologos/eugenidou-xristina" target="_blank" rel="noopener" style="color:var(--ink);border-bottom:1px solid var(--accent)" data-en="Book a slot via doctoranytime →">Κλείστε ώρα μέσω doctoranytime →</a></span></div></div>
+      </div>
+      <div class="map sr" id="map"><div class="bg" aria-hidden="true"></div><span class="pin" aria-hidden="true"></span><button type="button" id="mapbtn"><b><svg style="width:16px;height:16px"><use href="#pin"/></svg><span data-en="Show map">Εμφάνιση χάρτη</span></b><span data-en="Google Maps loads only when you ask">Το Google Maps φορτώνει μόνο όταν το ζητήσετε</span></button></div>
+    </div>
+    <div class="form sr d1" id="formbox">
+      <h3 data-en="Send a message">Στείλτε ένα μήνυμα</h3>
+      <p class="note" data-en="Confidential. Only Christina reads it.">Εμπιστευτικό. Το διαβάζει μόνο η Χριστίνα.</p>
+      <form id="form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+        <div class="row2">
+          <div class="field"><label for="f-name" data-en="Name">Όνομα</label><input id="f-name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="f-phone" data-en="Phone">Τηλέφωνο</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="row2">
+          <div class="field"><label for="f-for" data-en="Session for">Συνεδρία για</label><select id="f-for" name="for"><option data-en="Myself (adult)">Εμένα (ενήλικας)</option><option data-en="My teenager">Τον έφηβό μου</option><option data-en="Career assessment">Τεστ προσανατολισμού</option></select></div>
+          <div class="field"><label for="f-type" data-en="Format">Μορφή</label><select id="f-type" name="format"><option data-en="In person, Thessaloniki">Δια ζώσης, Θεσσαλονίκη</option><option data-en="Online (video call)">Online (βιντεοκλήση)</option></select></div>
+        </div>
+        <div class="field"><label for="f-msg" data-en="A few words (optional)">Δυο λόγια (προαιρετικά)</label><textarea id="f-msg" name="message" data-en-placeholder="What would you like help with?" placeholder="Σε τι θα θέλατε βοήθεια;"></textarea></div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <button class="btn accent" type="submit"><span data-en="Send message">Αποστολή μηνύματος</span><svg><use href="#arrow"/></svg></button>
+      </form>
+      <div class="ok" id="ok"><b data-en="Thank you — your message was sent.">Ευχαριστούμε — το μήνυμά σας στάλθηκε.</b><br><span data-en="Christina will get back to you within one working day.">Η Χριστίνα θα επικοινωνήσει μαζί σας μέσα σε μία εργάσιμη ημέρα.</span></div>
+      <p class="alt" data-en-html="Prefer to book a slot right away? <a href='https://www.doctoranytime.gr/d/Psychologos/eugenidou-xristina' target='_blank' rel='noopener'>Open the doctoranytime profile</a>.">Προτιμάτε να κλείσετε ώρα αμέσως; <a href="https://www.doctoranytime.gr/d/Psychologos/eugenidou-xristina" target="_blank" rel="noopener">Ανοίξτε το προφίλ στο doctoranytime</a>.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="fb" href="#top" data-en="Christina Evgenidou">Χριστίνα Ευγενίδου</a>
+        <p style="max-width:40ch" data-en="Psychologist for adolescents & adults, MSc. Cognitive-behavioural therapy in Thessaloniki and online, in Greek and English.">Ψυχολόγος εφήβων & ενηλίκων, MSc. Γνωσιακή-συμπεριφορική θεραπεία στη Θεσσαλονίκη και online, στα ελληνικά και στα αγγλικά.</p>
+      </div>
+      <div>
+        <h5 data-en="Office">Γραφείο</h5>
+        <address>Βασιλέως Ηρακλείου 37-39<br>Θεσσαλονίκη<br><span data-en="By appointment">Κατόπιν ραντεβού</span></address>
+      </div>
+      <div>
+        <h5 data-en="Links">Σύνδεσμοι</h5>
+        <ul>
+          <li><a href="https://www.doctoranytime.gr/d/Psychologos/eugenidou-xristina" target="_blank" rel="noopener">doctoranytime</a></li>
+          <li><a href="#faq" data-en="FAQ">Συχνές ερωτήσεις</a></li>
+          <li><span data-en="Licence no. ΔΔΥΚΜ/ΜΕΘ 265479(10712)">Αρ. αδείας ΔΔΥΚΜ/ΜΕΘ 265479(10712)</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="yr">2026</span> <span data-en="Christina Evgenidou">Χριστίνα Ευγενίδου</span></span>
+      <span data-en-html="Website by <a href='https://advonmedia.com' target='_blank' rel='noopener'>Advon Media</a>">Κατασκευή ιστοσελίδας <a href="https://advonmedia.com" target="_blank" rel="noopener">Advon Media</a></span>
+    </div>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Γρήγορες ενέργειες">
+  <a class="p" href="#contact"><svg><use href="#cal"/></svg><span data-en="Book">Ραντεβού</span></a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Βασιλέως+Ηρακλείου+37,+Θεσσαλονίκη" target="_blank" rel="noopener"><svg><use href="#pin"/></svg><span data-en="Directions">Οδηγίες</span></a>
+  <a href="#formbox"><svg><use href="#msg"/></svg><span data-en="Message">Μήνυμα</span></a>
+</nav>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Psychologist","@id":"#practice","name":"Χριστίνα Ευγενίδου — Ψυχολόγος εφήβων & ενηλίκων","alternateName":"Christina Evgenidou, Psychologist","image":"assets/og-portrait.jpg","address":{"@type":"PostalAddress","streetAddress":"Βασιλέως Ηρακλείου 37-39","addressLocality":"Θεσσαλονίκη","addressRegion":"Κεντρική Μακεδονία","addressCountry":"GR"},"areaServed":["Θεσσαλονίκη","Κέντρο Θεσσαλονίκης","Online"],"availableLanguage":["el","en"],"priceRange":"€€","paymentAccepted":"Cash, Credit Card, Klarna","sameAs":["https://www.doctoranytime.gr/d/Psychologos/eugenidou-xristina"],"founder":{"@id":"#person"}},
+ {"@type":"Person","@id":"#person","name":"Χριστίνα Ευγενίδου","alternateName":["Christina Evgenidou","Christina Eugenidou","Ευγενίδου Χριστίνα"],"jobTitle":"Ψυχολόγος εφήβων & ενηλίκων, MSc","alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Sheffield"},{"@type":"CollegeOrUniversity","name":"University College London"},{"@type":"CollegeOrUniversity","name":"Vrije Universiteit"}],"knowsLanguage":["el","en"],"hasCredential":[{"@type":"EducationalOccupationalCredential","name":"BSc Psychology, University of Sheffield"},{"@type":"EducationalOccupationalCredential","name":"MSc Brain Sciences, University College London"},{"@type":"EducationalOccupationalCredential","name":"MSc Law, Vrije Universiteit"},{"@type":"EducationalOccupationalCredential","name":"Άδεια ασκήσεως επαγγέλματος ψυχολόγου ΔΔΥΚΜ/ΜΕΘ 265479(10712)"}],"worksFor":{"@id":"#practice"}},
+ {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Πόσο διαρκεί μια συνεδρία και πόσο κοστίζει;","acceptedAnswer":{"@type":"Answer","text":"Οι συνεδρίες διαρκούν 50 λεπτά· το τεστ επαγγελματικού προσανατολισμού 150 λεπτά. Το κόστος επιβεβαιώνεται όταν κλείνετε ραντεβού, πριν την πρώτη συνεδρία, ώστε να μην υπάρχουν εκπλήξεις. Δεκτές πληρωμές με κάρτα, μετρητά και Klarna."}},
+  {"@type":"Question","name":"Μπορούμε να κάνουμε θεραπεία στα αγγλικά;","acceptedAnswer":{"@type":"Answer","text":"Ναι. Η Χριστίνα σπούδασε και εκπαιδεύτηκε σε Αγγλία και Ολλανδία και εργάζεται άνετα στα αγγλικά. Οι συνεδρίες στα αγγλικά ταιριάζουν σε expats, διεθνείς φοιτητές ή σε όποιον απλώς βρίσκει ευκολότερο να μιλά για κάποια πράγματα στα αγγλικά."}},
+  {"@type":"Question","name":"Είναι οι online συνεδρίες εξίσου αποτελεσματικές με τις δια ζώσης;","acceptedAnswer":{"@type":"Answer","text":"Για τη γνωσιακή-συμπεριφορική θεραπεία, ναι — η έρευνα δείχνει σταθερά συγκρίσιμα αποτελέσματα. Αυτό που μετράει είναι ένας ήσυχος, ιδιωτικός χώρος και μια σταθερή σύνδεση. Μπορείτε επίσης να συνδυάσετε τα δύο, π.χ. δια ζώσης στην αρχή και online όταν ταξιδεύετε."}},
+  {"@type":"Question","name":"Ο έφηβός μου δεν θέλει να έρθει. Τι μπορώ να κάνω;","acceptedAnswer":{"@type":"Answer","text":"Είναι πολύ συνηθισμένο. Ξεκινήστε με μια συνεδρία μόνο για γονείς: εξετάζουμε τι συμβαίνει και πώς μπορείτε να θίξετε το θέμα στο σπίτι. Οι έφηβοι συνήθως έρχονται μόλις καταλάβουν ότι ο χώρος είναι δικός τους και εμπιστευτικός — και ότι κανείς δεν πρόκειται να τους «διορθώσει»."}},
+  {"@type":"Question","name":"Πόσες συνεδρίες θα χρειαστώ;","acceptedAnswer":{"@type":"Answer","text":"Εξαρτάται από το πρόβλημα και τους στόχους σας. Επειδή η CBT είναι δομημένη και προσανατολισμένη σε στόχους, είναι συνήθως συντομότερη από άλλες προσεγγίσεις. Συμφωνούμε ένα πλάνο μέσα στις πρώτες συνεδρίες και το επανεξετάζουμε τακτικά."}},
+  {"@type":"Question","name":"Τι είναι το τεστ επαγγελματικού προσανατολισμού «Άριστον»;","acceptedAnswer":{"@type":"Answer","text":"Ένα τεστ 150 λεπτών για εφήβους και νέους που χαρτογραφεί ενδιαφέροντα, ικανότητες και χαρακτηριστικά προσωπικότητας σε συγκεκριμένες κατευθύνσεις σπουδών και καριέρας. Τα αποτελέσματα αναλύονται στη συνέχεια μαζί με τον νέο και την οικογένεια."}},
+  {"@type":"Question","name":"Είναι όλα εμπιστευτικά;","acceptedAnswer":{"@type":"Answer","text":"Ναι. Η εμπιστευτικότητα προστατεύεται από τον κώδικα δεοντολογίας του ψυχολόγου και τον νόμο. Τίποτα δεν κοινοποιείται χωρίς τη συγκατάθεσή σας, εκτός από τις σπάνιες περιπτώσεις που ο νόμος το απαιτεί για την προστασία της ζωής. Με τους εφήβους, τα όρια της εμπιστευτικότητας εξηγούνται καθαρά από την αρχή."}},
+  {"@type":"Question","name":"Τι γίνεται αν χρειαστεί να ακυρώσω;","acceptedAnswer":{"@type":"Answer","text":"Ενημερώστε μας έως 3 ώρες πριν τη συνεδρία και μεταφέρεται χωρίς χρέωση. Συνεδρίες που έχουν πληρωθεί online εκ των προτέρων επιστρέφονται όταν ακυρωθούν εγκαίρως."}}
+ ]}
+]}
+</script>
+
+<script>
+(function(){
+  var d=document,H=d.documentElement;H.classList.add('js');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var srs=[].slice.call(d.querySelectorAll('.sr'));
+  if(!('IntersectionObserver' in window)||d.hidden||reduce){srs.forEach(function(e){e.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.01});srs.forEach(function(e){io.observe(e)});d.addEventListener('visibilitychange',function(){if(d.hidden)srs.forEach(function(e){e.classList.add('in')})});}
+
+  /* nav + masthead shrink (ambient, transform only) */
+  var nav=d.getElementById('nav'),burger=d.getElementById('burger'),sheet=d.getElementById('sheet'),mast=d.getElementById('mastName');
+  var ticking=false;
+  function frame(){ticking=false;var y=scrollY;nav.classList.toggle('scrolled',y>40);
+    if(mast&&!reduce&&innerWidth>1040){var p=Math.min(1,y/420);mast.style.transform='translate3d(0,'+(p*-16)+'px,0) scale('+(1-p*.08)+')';mast.style.opacity=1-p*.55;}}
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});frame();
+  burger.addEventListener('click',function(){var o=!sheet.classList.contains('open');sheet.classList.toggle('open',o);burger.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);d.body.style.overflow=o?'hidden':''});
+  sheet.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){sheet.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');d.body.style.overflow=''})});
+
+  /* tabs */
+  var tabs=[].slice.call(d.querySelectorAll('.tab')),panes=[].slice.call(d.querySelectorAll('.pane'));
+  tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.setAttribute('aria-selected',x===t)});panes.forEach(function(p){p.classList.toggle('on',p.dataset.p===t.dataset.t)})})});
+
+  /* path — signature: line draws with scroll, steps light up */
+  var steps=[].slice.call(d.querySelectorAll('.step')),pathOn=d.getElementById('pathOn'),stepsBox=d.getElementById('steps'),progN=d.getElementById('progN');
+  function pathFrame(){var r=stepsBox.getBoundingClientRect();var vh=innerHeight;var p=(vh*.6-r.top)/r.height;p=Math.max(0,Math.min(1,p));pathOn.style.strokeDashoffset=1-p;var n=0;steps.forEach(function(s,i){var sr=s.getBoundingClientRect();var on=sr.top<vh*.62;s.classList.toggle('on',on);if(on)n=i+1});progN.textContent=('0'+Math.max(1,n)).slice(-2);}
+  var pt=false;addEventListener('scroll',function(){if(!pt){pt=true;requestAnimationFrame(function(){pt=false;pathFrame()})}},{passive:true});addEventListener('resize',pathFrame);pathFrame();
+  if(reduce){pathOn.style.strokeDashoffset=0;steps.forEach(function(s){s.classList.add('on')})}
+
+  /* map */
+  d.getElementById('mapbtn').addEventListener('click',function(){var m=d.getElementById('map');m.innerHTML='<iframe title="Χάρτης — Βασιλέως Ηρακλείου 37-39, Θεσσαλονίκη" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="https://www.google.com/maps?q='+encodeURIComponent('Βασιλέως Ηρακλείου 37-39, Θεσσαλονίκη')+'&z=16&output=embed"></iframe>'});
+
+  /* form */
+  var form=d.getElementById('form');
+  form.addEventListener('submit',function(e){
+    if(form.action.indexOf('REPLACE_ME')>-1){e.preventDefault();d.getElementById('formbox').classList.add('sent');return}
+    e.preventDefault();var btn=form.querySelector('button');btn.disabled=true;
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}}).then(function(r){if(r.ok){d.getElementById('formbox').classList.add('sent')}else{btn.disabled=false;form.submit()}}).catch(function(){btn.disabled=false;form.submit()});
+  });
+
+  /* language */
+  var nodes=[].slice.call(d.querySelectorAll('[data-en],[data-en-html],[data-en-placeholder],[data-en-alt],[data-en-aria-label]'));
+  nodes.forEach(function(n){if(n.hasAttribute('data-en'))n.dataset.el=n.textContent;if(n.hasAttribute('data-en-html'))n.dataset.elHtml=n.innerHTML;if(n.hasAttribute('data-en-placeholder'))n.dataset.elPlaceholder=n.getAttribute('placeholder');if(n.hasAttribute('data-en-alt'))n.dataset.elAlt=n.getAttribute('alt');if(n.hasAttribute('data-en-aria-label'))n.dataset.elAriaLabel=n.getAttribute('aria-label');});
+  var titles={el:d.title,en:'Psychologist Thessaloniki | Christina Evgenidou, MSc'};
+  var descs={el:d.querySelector('meta[name=description]').content,en:'English-speaking psychologist for adolescents and adults in central Thessaloniki and online. Cognitive-behavioural therapy for anxiety, panic, eating difficulties and women\'s empowerment.'};
+  function setLang(l){H.lang=l;nodes.forEach(function(n){if(n.hasAttribute('data-en'))n.textContent=l==='en'?n.dataset.en:n.dataset.el;if(n.hasAttribute('data-en-html'))n.innerHTML=l==='en'?n.dataset.enHtml:n.dataset.elHtml;if(n.hasAttribute('data-en-placeholder'))n.setAttribute('placeholder',l==='en'?n.dataset.enPlaceholder:n.dataset.elPlaceholder);if(n.hasAttribute('data-en-alt'))n.setAttribute('alt',l==='en'?n.dataset.enAlt:n.dataset.elAlt);if(n.hasAttribute('data-en-aria-label'))n.setAttribute('aria-label',l==='en'?n.dataset.enAriaLabel:n.dataset.elAriaLabel);});
+    d.title=titles[l];d.querySelector('meta[name=description]').content=descs[l];
+    d.querySelectorAll('.lang button').forEach(function(b){var on=b.dataset.lang===l;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+    try{localStorage.setItem('ce-lang',l)}catch(e){}}
+  d.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  try{if(localStorage.getItem('ce-lang')==='en')setLang('en')}catch(e){}
+  if(location.hash==='#en')setLang('en');
+  d.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
